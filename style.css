@@ -3,7 +3,18 @@
     border: none;
 }
 
-
-body .ui-datepicker td:hover {
-    background-color: #0055bb; /* Darker blue on hover */
+.dropdown-menu {
+    border-radius: 10px;
 }
+
+.date-text:hover {
+    background-color: #C0E9D8;
+    border-radius: 20px;
+}
+
+element.style {
+    display: contents;
+}
+
+
+

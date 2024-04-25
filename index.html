@@ -22,7 +22,7 @@ $(function() {
     // Initialize the datepickers
     var dateToday = new Date();
     $("#datepickerFrom").datepicker({
-        defaultDate: "+1w",
+        defaultDate: "-1w",
         changeMonth: true,
         numberOfMonths: 1,
         onClose: function(selectedDate) {
@@ -39,6 +39,13 @@ $(function() {
         }
     });
 
+    var datepickerElements = document.querySelectorAll('.ui-datepicker');
+    datepickerElements.forEach(function(element) {
+    element.style.display = 'contents';
+    });
+
+    
+
     // Handle opening the dropdown and showing the datepicker
     $('.dropdown-toggle').on('click', function (e) {
         $('.dropdown-menu').toggle();
@@ -46,6 +53,7 @@ $(function() {
     });
 });
 </script>
+
 
 </head>
 
@@ -58,30 +66,28 @@ $(function() {
             <div class="dropdown-menu card p-2">
                 <div class="d-flex">
                     <div id="ib5m-2" class="col-2">
-                        <p class="mb-1">Today</p>
-                        <p class="mb-1">Yesterday</p>
+                        <p class="mb-1 px-3 py-1 date-text">Today</p>
+                        <p class="mb-1 px-3 py-1 date-text">Yesterday</p>
                         <hr class="hr dark" />
-                        <p class="mb-1">Last 14 Days</p>
-                        <p class="mb-1">Last 7 Days</p>
-                        <p class="mb-1">Last 30 Days</p>
-                        <p class="mb-1">Last 90 Days</p>
-                        <p class="mb-1">Last 365 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text">Last 14 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text">Last 7 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text">Last 30 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text">Last 90 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text">Last 365 Days</p>
                         <hr class="hr" />
-                        <p class="mb-1">This Month</p>
-                        <p class="mb-1">This Year</p>
-                        <p class="mb-1">Previous Month</p>
-                        <p class="mb-1">Previous Year</p>
+                        <p class="mb-1 px-3 py-1 date-text">This Month</p>
+                        <p class="mb-1 px-3 py-1 date-text">This Year</p>
+                        <p class="mb-1 px-3 py-1 date-text">Previous Month</p>
+                        <p class="mb-1 px-3 py-1 date-text">Previous Year</p>
                       </div>
                     
                     <div class="col-10 px-4">
                         <div class="row">
-                            <div class="col-md-6 col-sm-12 px-2">
-                                <label for="datepickerFrom">Start Date:</label>
+                            <div class="col-md-6 col-sm-12 px-2 py-2">
                                 <div id="datepickerFrom" name="from"></div>
                             </div>
                      
-                            <div class="col-md-6 col-sm-12 px-2">
-                                <label for="datepickerTo">End Date:</label>
+                            <div class="col-md-6 col-sm-12 px-2 py-2">
                                 <div id="datepickerTo" name="to"></div>
                             </div>
                         </div>
