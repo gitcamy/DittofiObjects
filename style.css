@@ -16,5 +16,8 @@ element.style {
     display: contents;
 }
 
-
+.btn-date-select {
+    background: white;
+    border-radius: 10px;
+}
 
