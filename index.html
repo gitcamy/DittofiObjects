@@ -45,14 +45,37 @@ $(function() {
     element.style.display = 'contents';
     });
 
-    
+
+    // Initially hide the outer dropdown menu
+    $('.dropdown-menu').hide();
 
     // Handle opening the dropdown and showing the datepicker
     $('.dropdown-toggle').on('click', function (e) {
-        $('.dropdown-menu').toggle('');
-        $("#datepickerFrom").datepicker('show');
+        // Prevents the click event from propagating to other elements
+        e.stopPropagation();
+
+        // Toggle the visibility of the dropdown menu
+        $('.dropdown-menu').toggle();
+
+        // Check if the dropdown menu is visible
+        if ($('.dropdown-menu').is(':visible')) {
+            // If visible, show the datepicker
+            $("#datepickerFrom").datepicker('show');
+        } else {
+            // If not visible, hide the datepicker
+            $("#datepickerFrom").datepicker('hide');
+        }
+    });
+
+    // Close the dropdown menu if the user clicks outside of it
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.dropdown-menu').length) {
+            $('.dropdown-menu').hide();
+            $("#datepickerFrom").datepicker('hide');
+        }
     });
 });
+
 </script>
 
 
