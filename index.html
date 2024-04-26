@@ -20,6 +20,11 @@
 
 <script>
 $(function() {
+     // Handle stopping propagation of click events inside the dropdown menu
+     $('.dropdown-menu').on('click', function(e) {
+        e.stopPropagation();
+    });
+    
     // Initialize the datepickers
     var dateToday = new Date();
     $("#datepickerFrom").datepicker({
@@ -87,7 +92,7 @@ $(function() {
             <button class="btn btn-date-select dropdown-toggle shadow" type="button">
                 <i class="fa fa-calendar fa-fw"></i><span class="px-1">Select Date Range</span>
             </button>
-            <div class="dropdown-menu card p-2">
+            <div class="dropdown-menu card p-2 shadow">
                 <div class="d-flex">
                     <div id="ib5m-2" class="col-2">
                         <p class="mb-1 px-3 py-1 date-text">Today</p>
