@@ -79,6 +79,15 @@ $(function() {
             $("#datepickerFrom").datepicker('hide');
         }
     });
+
+    // Button click handler to save the date range
+    $('#saveDateRange').on('click', function() {
+    var fromDate = $("#datepickerFrom").datepicker("getDate");
+    var toDate = $("#datepickerTo").datepicker("getDate");
+        
+    // Display or use the dates somewhere. Example: log to console or show in an alert
+    alert(`Selected range: From ${fromDate.toLocaleDateString()} to ${toDate.toLocaleDateString()}`);
+    });
 });
 
 </script>
@@ -120,6 +129,10 @@ $(function() {
                                 <div id="datepickerTo" name="to"></div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center">
+                            <button id="saveDateRange" class="btn btn-success mt-2">Save Date Range</button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
