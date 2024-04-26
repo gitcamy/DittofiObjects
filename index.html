@@ -85,8 +85,15 @@ $(function() {
     var fromDate = $("#datepickerFrom").datepicker("getDate");
     var toDate = $("#datepickerTo").datepicker("getDate");
         
-    // Display or use the dates somewhere. Example: log to console or show in an alert
-    alert(`Selected range: From ${fromDate.toLocaleDateString()} to ${toDate.toLocaleDateString()}`);
+    // Display selected dates on dropdown text and close dropdown
+    if(fromDate && toDate) {
+        $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()}) - (${toDate.toLocaleDateString()})`);
+        } else {
+        $(".dropdown-toggle span").text("Select Date Range");
+    };
+    
+    $('.dropdown-menu').hide();
+    
     });
 });
 
