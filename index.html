@@ -18,87 +18,7 @@
 
 
 
-<script>
-$(function() {
-     // Handle stopping propagation of click events inside the dropdown menu
-     $('.dropdown-menu').on('click', function(e) {
-        e.stopPropagation();
-    });
-    
-    // Initialize the datepickers
-    var dateToday = new Date();
-    $("#datepickerFrom").datepicker({
-        defaultDate: "-1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function(selectedDate) {
-            $("#datepickerTo").datepicker("option", "minDate", selectedDate);
-        }
-    });
-
-    $("#datepickerTo").datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function(selectedDate) {
-            $("#datepickerFrom").datepicker("option", "maxDate", selectedDate);
-        }
-    });
-
-    var datepickerElements = document.querySelectorAll('.ui-datepicker');
-    datepickerElements.forEach(function(element) {
-    element.style.display = 'contents';
-    });
-
-
-    // Initially hide the outer dropdown menu
-    $('.dropdown-menu').hide();
-
-    // Handle opening the dropdown and showing the datepicker
-    $('.dropdown-toggle').on('click', function (e) {
-        // Prevents the click event from propagating to other elements
-        e.stopPropagation();
-
-        // Toggle the visibility of the dropdown menu
-        $('.dropdown-menu').toggle();
-
-        // Check if the dropdown menu is visible
-        if ($('.dropdown-menu').is(':visible')) {
-            // If visible, show the datepicker
-            $("#datepickerFrom").datepicker('show');
-        } else {
-            // If not visible, hide the datepicker
-            $("#datepickerFrom").datepicker('hide');
-        }
-    });
-
-    // Close the dropdown menu if the user clicks outside of it
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown-menu').length) {
-            $('.dropdown-menu').hide();
-            $("#datepickerFrom").datepicker('hide');
-        }
-    });
-
-    // Button click handler to save the date range
-    $('#saveDateRange').on('click', function() {
-    var fromDate = $("#datepickerFrom").datepicker("getDate");
-    var toDate = $("#datepickerTo").datepicker("getDate");
-        
-    // Display selected dates on dropdown text and close dropdown
-    if(fromDate && toDate) {
-        $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()}) - (${toDate.toLocaleDateString()})`);
-        } else {
-        $(".dropdown-toggle span").text("Select Date Range");
-    };
-    
-    $('.dropdown-menu').hide();
-    
-    });
-});
-
-</script>
-
+<script src="initDatepickers.js"></script>
 
 </head>
 
@@ -111,19 +31,19 @@ $(function() {
             <div class="dropdown-menu card p-2 shadow">
                 <div class="d-flex">
                     <div id="ib5m-2" class="col-2">
-                        <p class="mb-1 px-3 py-1 date-text">Today</p>
-                        <p class="mb-1 px-3 py-1 date-text">Yesterday</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-today">Today</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-yesterday">Yesterday</p>
                         <hr class="hr dark" />
-                        <p class="mb-1 px-3 py-1 date-text">Last 14 Days</p>
-                        <p class="mb-1 px-3 py-1 date-text">Last 7 Days</p>
-                        <p class="mb-1 px-3 py-1 date-text">Last 30 Days</p>
-                        <p class="mb-1 px-3 py-1 date-text">Last 90 Days</p>
-                        <p class="mb-1 px-3 py-1 date-text">Last 365 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-7">Last 7 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-14">Last 14 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-30">Last 30 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-90">Last 90 Days</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-365">Last 365 Days</p>
                         <hr class="hr" />
-                        <p class="mb-1 px-3 py-1 date-text">This Month</p>
-                        <p class="mb-1 px-3 py-1 date-text">This Year</p>
-                        <p class="mb-1 px-3 py-1 date-text">Previous Month</p>
-                        <p class="mb-1 px-3 py-1 date-text">Previous Year</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-this-month">This Month</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-this-year">This Year</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-month">Previous Month</p>
+                        <p class="mb-1 px-3 py-1 date-text selectable-date-range" id="select-last-year">Previous Year</p>
                       </div>
                     
                     <div class="col-10 px-4">
