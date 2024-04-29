@@ -113,10 +113,8 @@ $(function() {
         $('#datepickerTo').datepicker('setDate', toDate);
 
         // Update the dropdown button text
-        $(".dropdown-toggle span").text(`Selected range: From ${fromDate.toLocaleDateString()} to ${toDate.toLocaleDateString()}`);
-    
-        //Close menu
-        $('.dropdown-menu').hide();
+        $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()} - ${toDate.toLocaleDateString()})`);
+
     }); 
 
     // Button click handler to save the date range

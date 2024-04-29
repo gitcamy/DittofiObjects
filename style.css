@@ -21,4 +21,69 @@ element.style {
     border-radius: 10px;
 }
 
+#saveDateRange {
+    background: #DFF3EB;
+    border-radius: 10px;
+    border-color: #2CB67D;
+    color: #2CB67D;
+    opacity:50%;
+}
 
+#saveDateRange:hover {
+    background: #DFF3EB;
+    border-radius: 10px;
+    border-color: #2CB67D;
+    color: #2CB67D;
+    opacity: 100%;
+}
+
+.ui-datepicker-month {
+    border: none;
+}
+
+.ui-datepicker-year {
+    border: none;
+}
+
+.ui-datepicker select.ui-datepicker-month {
+    width: auto;
+}
+
+.ui-datepicker select.ui-datepicker-year {
+    width: auto;
+}
+
+tr {
+    font-family: 'Nunito';
+    color: #030229;
+}
+
+p {
+    font-family:'Nunito';
+    color: #030229;
+}
+
+.ui-widget-content .ui-state-default {
+    background: none;
+    border: none;
+    color: #030229;
+    font-family:'Nunito';
+    text-align: center;
+}
+
+.ui-datepicker-today .ui-state-highlight {
+    color:#2CB67D;
+
+}
+
+.ui-datepicker-current-day .ui-state-active {
+    background-color: rgba(3, 2, 41, 0.75);
+    color: white;
+    border-radius: 100px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ui-datepicker td {
+    width: 5px;
+    height:5px;
+}
