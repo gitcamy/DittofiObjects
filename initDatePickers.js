@@ -4,7 +4,10 @@ $(function() {
         e.stopPropagation();
     });
     
-    // Initialize the datepickers
+    // Initialize the datepicker
+    var selectedFromDate = null;
+    var selectedToDate = null;
+
     $("#datepickerFrom").datepicker({
         defaultDate: "-1w",
         changeMonth: true,
@@ -16,6 +19,7 @@ $(function() {
         }
     });
 
+
     $("#datepickerTo").datepicker({
         defaultDate: "+1w",
         changeMonth: true,
@@ -23,10 +27,10 @@ $(function() {
         yearRange: "1950:2030",
         numberOfMonths: 1,
         onClose: function(selectedDate) {
-            $("#datepickerFrom").datepicker("option", "maxDate", selectedDate);
+            $("#datepickerFrom").datepicker("option", "minDate", selectedDate);
         }
     });
-
+    
     //Changes calendar display to contents
     var datepickerElements = document.querySelectorAll('.ui-datepicker');
     datepickerElements.forEach(function(element) {
@@ -55,6 +59,7 @@ $(function() {
             $("#datepickerFrom").datepicker('hide');
         }
     });
+
 
     //Preset date range handling
     $('.selectable-date-range').on('click', function() {
@@ -116,18 +121,32 @@ $(function() {
         $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()} - ${toDate.toLocaleDateString()})`);
 
     }); 
+       
+    //highlight days within date range
+    function highlightDays(date) {
+        var fromDate = $("#datepickerFrom").datepicker("getDate");
+        var toDate = $("#datepickerTo").datepicker("getDate");
+        if (fromDate && toDate && date >= fromDate && date <= toDate) {
+             return [true, 'highlight', '']; // highlight is a class name
+         }
+        return [true, '', ''];
+    };
+
+    $("#datepickerFrom, #datepickerTo").datepicker("option", "beforeShowDay", highlightDays); 
 
     // Button click handler to save the date range
-        $('#saveDateRange').on('click', function() {
-            var fromDate = $("#datepickerFrom").datepicker("getDate");
-            var toDate = $("#datepickerTo").datepicker("getDate");
+    $('#saveDateRange').on('click', function() {
+        var fromDate = $("#datepickerFrom").datepicker("getDate");
+        var toDate = $("#datepickerTo").datepicker("getDate");
             
-            if(fromDate && toDate) {
-                $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()}) - (${toDate.toLocaleDateString()})`);
-            } else {
-                $(".dropdown-toggle span").text("Select Date Range");
-            };
+        if(fromDate && toDate) {
+            $(".dropdown-toggle span").text(`(${fromDate.toLocaleDateString()}) - (${toDate.toLocaleDateString()})`);
+        } else {
+            $(".dropdown-toggle span").text("Select Date Range");
+        };
 
-            $('.dropdown-menu').hide();
-        });
+        $('.dropdown-menu').hide();
+    });
+
+
 });
